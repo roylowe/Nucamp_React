@@ -8,10 +8,12 @@ class CampsiteInfo extends Component {
             <div className="col-md-5 m1">
             <Card onClick={() => this.onCampsiteSelect(campsite)}>
                 <CardImg width="100%" src={this.props.campsite.image} alt={this.props.campsite.name} />
-                <CardImgOverlay>
+                <CardBody>
                     <CardTitle>{this.props.campsite.name}</CardTitle>
-                </CardImgOverlay>
-            </Card></div>
+                    <CardText>{this.props.campsite.description}</CardText>
+                </CardBody>
+            </Card>
+            </div>
         );
     }
     
@@ -48,6 +50,7 @@ class CampsiteInfo extends Component {
                     <div className="row">
                         
                           {this.renderCampsite(this.props.campsite)}
+                         
                           {this.renderComments(this.props.comments)}
                           
                           
