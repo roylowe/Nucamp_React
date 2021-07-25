@@ -5,7 +5,7 @@ class CampsiteInfo extends Component {
     renderCampsite(campsite){
        
         return(
-            <div className="col-md-5 m1">
+            <div className="col-md-5 m-1">
             <Card onClick={() => this.onCampsiteSelect(campsite)}>
                 <CardImg width="100%" src={this.props.campsite.image} alt={this.props.campsite.name} />
                 <CardBody>
@@ -46,15 +46,17 @@ class CampsiteInfo extends Component {
 
     render() {
         if (this.props.campsite){
-            return (               
-                    <div className="row">
-                        
-                          {this.renderCampsite(this.props.campsite)}
-                         
-                          {this.renderComments(this.props.campsite.comments)}
-                          
-                          
-                    </div> 
+            return (  
+                    <div className="container">             
+                        <div className="row">
+                            
+                              {this.renderCampsite(this.props.campsite)}
+                            
+                              {this.renderComments(this.props.campsite.comments)}
+                              
+                              
+                        </div> 
+                    </div>
             );
         }else{
             return(
