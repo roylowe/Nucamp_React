@@ -8,7 +8,7 @@ import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { addComment, campsitesLoading, fetchCampsites } from "../redux/ActionCreators";
+import { addComment, fetchCampsites } from "../redux/ActionCreators";
 
 const mapDispatchToProps = {
   addComment: (campsiteId, rating, author, text) =>
@@ -37,7 +37,7 @@ class Main extends Component {
         <Home
           campsite={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
           campsitesLoading={this.props.campsites.isLoading}
-          campsitesErrMess={this.props.campsites.ErrMess}
+          campsitesErrMess={this.props.campsites.errMess}
           promotion={this.props.promotions.filter(promotion => promotion.featured)[0]}
           partner={this.props.partners.filter(partner => partner.featured)[0]}
         />

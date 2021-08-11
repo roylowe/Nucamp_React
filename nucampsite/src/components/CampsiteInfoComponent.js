@@ -16,7 +16,7 @@ import {
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import ModalBody from "reactstrap/lib/ModalBody";
-import { Loading} from './LoadingComponent';
+import { Loading } from './LoadingComponent';
 
 const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
@@ -206,7 +206,7 @@ function CampsiteInfo(props) {
       </div>
     );
   } else {
-    return <div></div>;
+    return (<div></div>);
   }
 }
 
