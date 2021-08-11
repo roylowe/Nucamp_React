@@ -8,12 +8,15 @@ import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { actions } from 'react-redux-form';
 import { addComment, fetchCampsites } from "../redux/ActionCreators";
 
+
+
 const mapDispatchToProps = {
-  addComment: (campsiteId, rating, author, text) =>
-    (addComment(campsiteId, rating, author, text)),
-    fetchCampsites: () => (fetchCampsites())
+  addComment: (campsiteId, rating, author, text) => (addComment(campsiteId, rating, author, text)),
+    fetchCampsites: () => (fetchCampsites()),
+    resetFeedbackForm: () => (actions.reset('feedbackForm'))
 };
 
 const mapStateToProps = (state) => {
@@ -34,12 +37,12 @@ class Main extends Component {
   render() {
     const HomePage = () => {
       return (
-        <Home
-          campsite={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
-          campsitesLoading={this.props.campsites.isLoading}
-          campsitesErrMess={this.props.campsites.errMess}
-          promotion={this.props.promotions.filter(promotion => promotion.featured)[0]}
-          partner={this.props.partners.filter(partner => partner.featured)[0]}
+      <Home      
+       campsite={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
+       campsitesLoading={this.props.campsites.isLoading}
+       campsitesErrMess={this.props.campsites.errMess}
+       promotion={this.props.promotions.filter(promotion => promotion.featured)[0]}
+       partner={this.props.partners.filter(partner => partner.featured)[0]}
         />
       );
     }
@@ -70,7 +73,7 @@ class Main extends Component {
             render={() => <Directory campsites={this.props.campsites} />}
           />
           <Route path="/directory/:campsiteId" component={CampsiteWithId} />
-          <Route exact path="/contactus" component={Contact} />
+          <Route exact path="/contactus" render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
           {/* adding routing for about us page */}
           <Route
             exact

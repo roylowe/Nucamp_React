@@ -3,7 +3,7 @@ import * as ActionTypes from './ActionTypes';
 export const Campsites = (state = {
         isLoading: true,
         errMess: null,
-        campsites: []
+        campsites: [] 
     }, action) => {
     switch (action.type) {
         case ActionTypes.ADD_CAMPSITES:
